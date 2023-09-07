@@ -18,7 +18,7 @@ const EditTodoButton: React.FunctionComponent<IEditTodoButtonProps> = ({ todo })
 
     const handleEditButton = async () => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/todo/update`, {
+            const response = await axios.put(`${process.env.BASE_URL}/todo/update`, {
                 title: editedTitle,
                 id: todo.id,
                 createdAt: todo.createdAt,

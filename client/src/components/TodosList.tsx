@@ -67,11 +67,11 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
                 let response;
                 if (pathname === "/all") {
                     response = await axios.get(
-                        `http://localhost:5000/api/todo/get?page=${currentPage}&limit=${todosPerPage}`
+                        `${process.env.BASE_URL}/todo/todo/get?page=${currentPage}&limit=${todosPerPage}`
                     );
                 } else {
                     response = await axios.get(
-                        `http://localhost:5000/api/todo/get?completionStatus=${pathname.slice(
+                        `${process.env.BASE_URL}/todo/get?completionStatus=${pathname.slice(
                             11
                         )}&page=${currentPage}&limit=${todosPerPage}`
                     );
@@ -89,7 +89,7 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
         if (shouldRefetch) {
             fetchTodos();
         }
-    }, [shouldRefetch, currentPage, pathname]);
+    }, [shouldRefetch, currentPage, pathname, setShouldRefetch]);
 
     return (
         todos !== null && todos.length !== 0 ? (

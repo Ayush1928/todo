@@ -26,3 +26,5 @@ app.use("/api/todo",todoRouter);
 app.listen(port, () => {
   console.log(`Backend Server is running on port : ${port}`);
 });
+
+module.exports = app;

@@ -13,7 +13,7 @@ const AddTodo: React.FC = () => {
 
   const handleOnClickAddTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/todo/add", {
+    axios.post(`${process.env.BASE_URL}/todo/add`, {
       id: nanoid(),
       title: todo,
       isCompleted: false,
