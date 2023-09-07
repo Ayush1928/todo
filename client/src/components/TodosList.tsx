@@ -48,7 +48,7 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
 
             setTodos(updatedTodos);
 
-            await axios.put(`http://localhost:5000/api/todo/update`, {
+            await axios.put(`${process.env.BASE_URL}/todo/update`, {
                 id: todoId,
                 isCompleted: updatedTodos.find((todo) => todo.id === todoId)
                     ?.isCompleted,
@@ -67,7 +67,7 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
                 let response;
                 if (pathname === "/all") {
                     response = await axios.get(
-                        `${process.env.BASE_URL}/todo/todo/get?page=${currentPage}&limit=${todosPerPage}`
+                        `${process.env.BASE_URL}/todo/get?page=${currentPage}&limit=${todosPerPage}`
                     );
                 } else {
                     response = await axios.get(
