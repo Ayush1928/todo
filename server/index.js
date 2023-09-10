@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
-dotenv.config();
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
-import todoRouter from "./Routes/todoRoute"
+import todoRouter from "./Routes/todoRoute.js"
+dotenv.config({path: './.env.local'});
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,5 +26,3 @@ app.use("/api/todo",todoRouter);
 app.listen(port, () => {
   console.log(`Backend Server is running on port : ${port}`);
 });
-
-module.exports = app;

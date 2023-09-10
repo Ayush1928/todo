@@ -1,6 +1,6 @@
-import express, { Request, Response } from "express";
+import express from "express";
 const router = express.Router();
-import Todo from "../Models/Todo";
+import Todo from "../Models/Todo.js";
 
 // Create
 router.post("/add", async (req, res) => {
