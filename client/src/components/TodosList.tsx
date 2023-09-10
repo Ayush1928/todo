@@ -89,7 +89,7 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
         if (shouldRefetch) {
             fetchTodos();
         }
-    }, [shouldRefetch, currentPage, pathname, setShouldRefetch]);
+    }, [shouldRefetch, currentPage, pathname, setShouldRefetch, baseUrl]);
 
     return (
         todos !== null && todos.length !== 0 ? (
