@@ -19,7 +19,7 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
     const [totalPages, setTotalPages] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const todosPerPage = 4;
-
+    const baseUrl = process.env.BASE_URL
     const handlePageButton = (
         e: React.MouseEvent<HTMLButtonElement>,
         action: string
@@ -48,7 +48,7 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
 
             setTodos(updatedTodos);
 
-            await axios.put(`${process.env.BASE_URL}/todo/update`, {
+            await axios.put(`${baseUrl}/todo/update`, {
                 id: todoId,
                 isCompleted: updatedTodos.find((todo) => todo.id === todoId)
                     ?.isCompleted,
@@ -67,11 +67,11 @@ const TodosList: React.FunctionComponent<ITodosListProps> = () => {
                 let response;
                 if (pathname === "/all") {
                     response = await axios.get(
-                        `${process.env.BASE_URL}/todo/get?page=${currentPage}&limit=${todosPerPage}`
+                        `${baseUrl}/todo/get?page=${currentPage}&limit=${todosPerPage}`
                     );
                 } else {
                     response = await axios.get(
-                        `${process.env.BASE_URL}/todo/get?completionStatus=${pathname.slice(
+                        `${baseUrl}/todo/get?completionStatus=${pathname.slice(
                             11
                         )}&page=${currentPage}&limit=${todosPerPage}`
                     );

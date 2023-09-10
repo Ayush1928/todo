@@ -15,10 +15,10 @@ const EditTodoButton: React.FunctionComponent<IEditTodoButtonProps> = ({ todo })
     const [editedTitle, setEditedTitle] = React.useState<string>("")
     const [open, setOpen] = React.useState<boolean>(false)
     const cancelButtonRef = React.useRef(null)
-
+    const baseUrl = process.env.BASE_URL
     const handleEditButton = async () => {
         try {
-            const response = await axios.put(`${process.env.BASE_URL}/todo/update`, {
+            const response = await axios.put(`${baseUrl}/todo/update`, {
                 title: editedTitle,
                 id: todo.id,
                 createdAt: todo.createdAt,

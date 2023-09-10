@@ -11,9 +11,10 @@ interface IDeleteTodoButtonProps {
 const DeleteTodoButton: React.FunctionComponent<IDeleteTodoButtonProps> = ({ id }) => {
     const context = React.useContext(TodoContext)
     const setShouldRefetch = context.setShouldRefetch
+    const baseUrl = process.env.BASE_URL
     const deleteTodo = async () => {
         try {
-            const response = await axios.delete(`${process.env.BASE_URL}/todo/delete?${id}`, {
+            const response = await axios.delete(`${baseUrl}/todo/delete?${id}`, {
                 params: {
                     id: id
                 }

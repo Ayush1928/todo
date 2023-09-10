@@ -10,10 +10,10 @@ const AddTodo: React.FC = () => {
   const [todo, setTodo] = useState<string>("")
   const context = useContext(TodoContext)
   const setShouldRefetch = context.setShouldRefetch
-
+  const baseUrl = process.env.BASE_URL
   const handleOnClickAddTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    axios.post(`${process.env.BASE_URL}/todo/add`, {
+    axios.post(`${baseUrl}/todo/add`, {
       id: nanoid(),
       title: todo,
       isCompleted: false,
