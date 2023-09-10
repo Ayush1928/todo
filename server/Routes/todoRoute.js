@@ -3,7 +3,7 @@ const router = express.Router();
 import Todo from "../Models/Todo";
 
 // Create
-router.post("/add", async (req: Request, res: Response) => {
+router.post("/add", async (req, res) => {
     const { title, id, createdAt, isCompleted } = req.body;
 
     if (!title || title.trim() === '') {
@@ -30,14 +30,14 @@ router.post("/add", async (req: Request, res: Response) => {
 });
 
 // Get all todos
-router.get("/get", async (req: Request, res: Response) => {
+router.get("/get", async (req, res) => {
     try {
-        const queryIsCompleted = req.query.completionStatus as string | undefined;
+        const queryIsCompleted = req.query.completionStatus;
         const page = req.query.page ? Number(req.query.page) : 1;
         const limit = req.query.limit ? Number(req.query.limit) : 5;
         const skip = (page - 1) * limit;
         
-        const filter: Record<string, any> = {};
+        const filter = {};
         if (queryIsCompleted === "active") {
             filter.isCompleted = false;
         } else if (queryIsCompleted === "completed") {
@@ -60,8 +60,8 @@ router.get("/get", async (req: Request, res: Response) => {
 
 
 //Delete Todo
-router.delete("/delete", async (req: Request, res: Response) => {
-    const id = req.query.id as string | undefined;
+router.delete("/delete", async (req, res) => {
+    const id = req.query.id;
     try {
         if (!id) {
             return res.status(404).json("Todo id not passed.");
@@ -80,8 +80,8 @@ router.delete("/delete", async (req: Request, res: Response) => {
 });
 
 //Update Todo
-router.put("/update", async (req: Request, res: Response) => {
-    const id = req.body.id as string | undefined;
+router.put("/update", async (req, res) => {
+    const id = req.body.id;
 
     try {
         if (!id) {

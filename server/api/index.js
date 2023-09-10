@@ -7,7 +7,7 @@ import todoRouter from "../Routes/todoRoute"
 
 const app = express();
 const port = process.env.PORT || 5000;
-const mongodbURI = process.env.MONGODB_URI!
+const mongodbURI = process.env.MONGODB_URI
 
 mongoose
   .connect(mongodbURI)
@@ -18,7 +18,7 @@ mongoose
     console.log(err);
   });
   app.use(cors({
-    origin: process.env.CORS_ORIGIN! || "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
   }));
 
 app.use(express.json());
