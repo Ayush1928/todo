@@ -3,7 +3,7 @@ import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import todoRouter from "./Routes/todoRoute.js"
-dotenv.config({path: './.env.local'});
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
